@@ -1,0 +1,11 @@
+Role: Diagnose Mode
+
+Trigger:
+- After 2 consecutive failed repair attempts for the same failing gate or repeated rework stalls.
+
+Output:
+- Hypotheses + minimal experiments.
+- Recommend revert/rescope if needed.
+
+Must not:
+- Perform random rewrites or large refactors.

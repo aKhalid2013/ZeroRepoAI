@@ -1,0 +1,106 @@
+{
+  "version": 1,
+  "defaults": {
+    "files": [
+      "docs/WORKFLOW.md",
+      "docs/PRINCIPLES.md",
+      "docs/AGENTS.md"
+    ],
+    "max_chars": 12000
+  },
+  "agents": {
+    "spec": {
+      "files": [
+        "docs/WORKFLOW.md",
+        "docs/PRINCIPLES.md",
+        "docs/AGENTS.md",
+        "docs/PRD.md",
+        "docs/FEATURES/_TEMPLATE.md",
+        "docs/REGISTERS/KNOWN_ISSUES.md",
+        "docs/REGISTERS/RISK_REGISTER.md",
+        "docs/SECURITY_BASELINE.md"
+      ],
+      "max_chars": 16000
+    },
+    "planner": {
+      "files": [
+        "docs/WORKFLOW.md",
+        "docs/PRINCIPLES.md",
+        "docs/AGENTS.md",
+        "docs/PRD.md",
+        "docs/REGISTERS/KNOWN_ISSUES.md",
+        "docs/REGISTERS/RISK_REGISTER.md",
+        "docs/QUALITY_GATES.md"
+      ],
+      "max_chars": 16000
+    },
+    "implementer": {
+      "files": [
+        "docs/WORKFLOW.md",
+        "docs/PRINCIPLES.md",
+        "docs/AGENTS.md",
+        "docs/PRD.md",
+        "docs/QUALITY_GATES.md",
+        "docs/REFERENCES/_TEMPLATE.md",
+        "docs/REGISTERS/KNOWN_ISSUES.md",
+        "docs/REGISTERS/RISK_REGISTER.md"
+      ],
+      "max_chars": 16000
+    },
+    "reviewer": {
+      "files": [
+        "docs/WORKFLOW.md",
+        "docs/PRINCIPLES.md",
+        "docs/AGENTS.md",
+        "docs/PRD.md",
+        "docs/QUALITY_GATES.md",
+        "docs/SECURITY_BASELINE.md",
+        "docs/REGISTERS/KNOWN_ISSUES.md",
+        "docs/REGISTERS/RISK_REGISTER.md"
+      ],
+      "max_chars": 16000
+    },
+    "verifier": {
+      "files": [
+        "docs/WORKFLOW.md",
+        "docs/PRINCIPLES.md",
+        "docs/AGENTS.md",
+        "docs/QUALITY_GATES.md"
+      ],
+      "max_chars": 14000
+    },
+    "doc_steward": {
+      "files": [
+        "docs/WORKFLOW.md",
+        "docs/PRINCIPLES.md",
+        "docs/AGENTS.md",
+        "docs/PRD.md",
+        "docs/DECISION_LOG.md",
+        "docs/FEATURES/_TEMPLATE.md",
+        "docs/ADR/0000-adr-template.md",
+        "docs/REGISTERS/KNOWN_ISSUES.md",
+        "docs/REGISTERS/RISK_REGISTER.md"
+      ],
+      "max_chars": 20000
+    },
+    "librarian": {
+      "files": [
+        "docs/WORKFLOW.md",
+        "docs/PRINCIPLES.md",
+        "docs/AGENTS.md",
+        "docs/REFERENCES/_TEMPLATE.md"
+      ],
+      "max_chars": 14000
+    },
+    "diagnose": {
+      "files": [
+        "docs/WORKFLOW.md",
+        "docs/PRINCIPLES.md",
+        "docs/AGENTS.md",
+        "docs/REGISTERS/KNOWN_ISSUES.md",
+        "docs/REGISTERS/RISK_REGISTER.md"
+      ],
+      "max_chars": 14000
+    }
+  }
+}
