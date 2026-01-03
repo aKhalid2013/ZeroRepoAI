@@ -1,0 +1,187 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "ZeroRepo: New Feature",
+            "type": "shell",
+            "command": "${workspaceFolder}/scripts/new-feature.ps1",
+            "args": [
+                "-Title",
+                "${input:featureTitle}"
+            ],
+            "problemMatcher": [],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "detail": "Scaffolds a new feature spec. User must fill in the template."
+        },
+        {
+            "label": "ZeroRepo: New ADR",
+            "type": "shell",
+            "command": "${workspaceFolder}/scripts/new-adr.ps1",
+            "args": [
+                "-Title",
+                "${input:adrTitle}"
+            ],
+            "problemMatcher": [],
+            "detail": "Creates a new Architectural Decision Record."
+        },
+        {
+            "label": "ZeroRepo: Verify (All Gates)",
+            "type": "shell",
+            "command": "${workspaceFolder}/scripts/verify.ps1",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "problemMatcher": [],
+            "detail": "MANDATORY: Runs all gates (Lint, Typecheck, Test, Build). Must pass before merge."
+        },
+        {
+            "label": "ZeroRepo: Agent - Spec (Feature Track)",
+            "type": "shell",
+            "command": "${workspaceFolder}/scripts/agent.ps1",
+            "args": [
+                "spec",
+                "${input:agentMessage}"
+            ],
+            "group": "build",
+            "problemMatcher": [],
+            "detail": "RULES: Owns feature specs. Closes open questions. MUST NOT plan or implement."
+        },
+        {
+            "label": "ZeroRepo: Agent - Plan",
+            "type": "shell",
+            "command": "${workspaceFolder}/scripts/agent.ps1",
+            "args": [
+                "plan",
+                "${input:agentMessage}"
+            ],
+            "group": "build",
+            "problemMatcher": [],
+            "detail": "RULES: Produces implementation plan + verify cmds. MUST perform Registry Sweep. MUST NOT implement."
+        },
+        {
+            "label": "ZeroRepo: Agent - Implement",
+            "type": "shell",
+            "command": "${workspaceFolder}/scripts/agent.ps1",
+            "args": [
+                "implement",
+                "${input:agentMessage}"
+            ],
+            "group": "build",
+            "problemMatcher": [],
+            "detail": "RULES: Writes code. Smallest safe slice only. NO scope creep. Respect Reference Freeze."
+        },
+        {
+            "label": "ZeroRepo: Agent - Review",
+            "type": "shell",
+            "command": "${workspaceFolder}/scripts/agent.ps1",
+            "args": [
+                "review",
+                "${input:agentMessage}"
+            ],
+            "group": "build",
+            "problemMatcher": [],
+            "detail": "RULES: Reviews against spec + security baseline. Outcome: Approved, Rework, or Deferred."
+        },
+        {
+            "label": "ZeroRepo: Agent - Verifier",
+            "type": "shell",
+            "command": "${workspaceFolder}/scripts/agent.ps1",
+            "args": [
+                "verifier",
+                "${input:agentMessage}"
+            ],
+            "group": "build",
+            "problemMatcher": [],
+            "detail": "RULES: Runs gates or reports explicit SKIPs. Enforces 2-iteration cap. Triggers Diagnose Mode."
+        },
+        {
+            "label": "ZeroRepo: Agent - Doc Steward",
+            "type": "shell",
+            "command": "${workspaceFolder}/scripts/agent.ps1",
+            "args": [
+                "doc_steward",
+                "${input:agentMessage}"
+            ],
+            "group": "build",
+            "problemMatcher": [],
+            "detail": "RULES: Updates docs (PRD, ADRs, Registers) based on PROOF. End of feature only."
+        },
+        {
+            "label": "ZeroRepo: Agent - Librarian",
+            "type": "shell",
+            "command": "${workspaceFolder}/scripts/agent.ps1",
+            "args": [
+                "librarian",
+                "${input:agentMessage}"
+            ],
+            "group": "build",
+            "problemMatcher": [],
+            "detail": "RULES: Maintains docs/REFERENCES. Validates new dependencies/APIs."
+        },
+        {
+            "label": "ZeroRepo: Agent - Diagnose Mode",
+            "type": "shell",
+            "command": "${workspaceFolder}/scripts/agent.ps1",
+            "args": [
+                "diagnose",
+                "${input:agentMessage}"
+            ],
+            "group": "build",
+            "problemMatcher": [],
+            "detail": "RULES: For stuck tasks (>2 fails). Output hypotheses + minimal experiments. NO random rewrites."
+        },
+        {
+            "label": "ZeroRepo: Custom Agent Call",
+            "type": "shell",
+            "command": "${workspaceFolder}/scripts/agent.ps1",
+            "args": [
+                "${input:agentRole}",
+                "${input:agentMessage}"
+            ],
+            "problemMatcher": [],
+            "detail": "Call any agent role manually."
+        }
+    ],
+    "inputs": [
+        {
+            "id": "featureTitle",
+            "type": "promptString",
+            "description": "Enter the Feature Title (e.g., 'User Login Flow')"
+        },
+        {
+            "id": "adrTitle",
+            "type": "promptString",
+            "description": "Enter the ADR Title (e.g., 'Use Postgres for Auth')"
+        },
+        {
+            "id": "agentMessage",
+            "type": "promptString",
+            "description": "Enter instruction for the agent (leave empty for default prompt)",
+            "default": ""
+        },
+        {
+            "id": "agentRole",
+            "type": "pickString",
+            "description": "Select Agent Role",
+            "options": [
+                "spec",
+                "plan",
+                "implement",
+                "review",
+                "verify",
+                "doc-steward",
+                "librarian",
+                "diagnose"
+            ],
+            "default": "spec"
+        }
+    ]
+}

@@ -10,7 +10,7 @@ Thumbs.db
 .env.*
 
 # IDE
-.vscode/
+# .vscode/
 .idea/
 
 # Build outputs

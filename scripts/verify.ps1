@@ -61,10 +61,15 @@ if ($failedGate) {
 
 $summary = foreach ($gate in $gates) {
   [PSCustomObject]@{
-    Gate = $gate
+    Gate   = $gate
     Status = $status[$gate]
   }
 }
+
+Write-Host ""
+Write-Host "--- Doc Verification ---"
+& "$PSScriptRoot/verify-docs.ps1"
+Write-Host "------------------------"
 
 Write-Host ""
 Write-Host "Summary"
