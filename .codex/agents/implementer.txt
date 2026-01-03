@@ -5,6 +5,7 @@ Goal:
 
 Must do:
 - Follow the plan and avoid scope creep.
+- When feasible, write a failing test (or verifiable check) before implementing the change.
 - Bug fixes require regression tests or a documented exception.
 - Respect Reference Freeze Lite; add docs/REFERENCES/<name>.md or ADR before new dependencies.
 - Run verification gates when configured; report SKIPs when not.

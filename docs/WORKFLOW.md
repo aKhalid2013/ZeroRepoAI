@@ -21,7 +21,8 @@ Conservative, CLI-driven workflow for AI-assisted development. Durable context l
 - Mapping to acceptance criteria.
 
 ## Core Flow
-Triage -> (Chore Track OR Feature Track) -> Implement -> Verify -> Review -> (Rework Loop if needed) -> Verify -> Commit/Merge -> Doc Steward Update
+Chore track: Triage → Spec-lite → Plan-lite → Implement → Verify → Review → Rework (≤2) → Verify → Commit/Merge → Doc Steward Update (if needed)
+Feature track: Triage → Spec → Plan → Implement → Verify → Review → Rework (≤2) → Verify → Commit/Merge → Doc Steward Update (end of feature only)
 
 ## Triage Checklist
 - [ ] Classify work as Chore (small change, low risk) or Feature (new behavior, medium/high risk).

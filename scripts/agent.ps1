@@ -50,19 +50,16 @@ if ($contextMap.agents.PSObject.Properties.Name -contains $role) {
   $entry = $contextMap.agents.$role
 }
 
-$files = New-Object System.Collections.Generic.List[string]
-foreach ($file in $entry.files) { $files.Add($file) | Out-Null }
+$maxChars = $null
+if ($entry.PSObject.Properties.Name -contains "max_chars") {
+  $maxChars = [int]$entry.max_chars
+}
 
-$planningRoles = @("planner")
-if ($planningRoles -contains $role) {
-  $registryFiles = @(
-    "docs/REGISTERS/KNOWN_ISSUES.md",
-    "docs/REGISTERS/RISK_REGISTER.md"
-  )
-  foreach ($reg in $registryFiles) {
-    if (-not $files.Contains($reg)) {
-      $files.Insert(0, $reg)
-    }
+$files = New-Object System.Collections.Generic.List[string]
+$seen = New-Object System.Collections.Generic.HashSet[string] ([System.StringComparer]::OrdinalIgnoreCase)
+foreach ($file in $entry.files) {
+  if ($seen.Add($file)) {
+    $files.Add($file) | Out-Null
   }
 }
 
@@ -73,14 +70,26 @@ $payloadParts.Add("AGENT PROMPT") | Out-Null
 $payloadParts.Add($agentPrompt) | Out-Null
 $payloadParts.Add("CONTEXT FILES") | Out-Null
 
+$includedFiles = New-Object System.Collections.Generic.List[string]
+$excludedDueToBudget = New-Object System.Collections.Generic.List[string]
+$totalIncludedChars = 0
+
 foreach ($file in $files) {
   $path = Join-Path $root $file
   if (-not (Test-Path $path)) {
     Write-Warning ("Missing context file: " + $file)
     continue
   }
+  $content = Get-Content $path -Raw
+  $contentLength = $content.Length
+  if ($null -ne $maxChars -and (($totalIncludedChars + $contentLength) -gt $maxChars)) {
+    $excludedDueToBudget.Add($file) | Out-Null
+    continue
+  }
   $payloadParts.Add("### FILE: " + $file) | Out-Null
-  $payloadParts.Add((Get-Content $path -Raw)) | Out-Null
+  $payloadParts.Add($content) | Out-Null
+  $includedFiles.Add($file) | Out-Null
+  $totalIncludedChars += $contentLength
 }
 
 $payloadParts.Add("USER MESSAGE") | Out-Null
@@ -90,6 +99,23 @@ $payload = ($payloadParts -join "`n`n")
 
 Write-Host "Agent: $role"
 Write-Host "Reminder: max 2 fix attempts before Diagnose Mode."
+
+$budgetLabel = "none"
+if ($null -ne $maxChars) {
+  $budgetLabel = $maxChars
+}
+$includedLabel = "(none)"
+if ($includedFiles.Count -gt 0) {
+  $includedLabel = ($includedFiles -join ", ")
+}
+Write-Host "Context Pack Summary"
+Write-Host ("- Agent role: " + $role)
+Write-Host ("- Budget max_chars: " + $budgetLabel)
+Write-Host ("- Total included chars: " + $totalIncludedChars)
+Write-Host ("- Included files: " + $includedLabel)
+if ($excludedDueToBudget.Count -gt 0) {
+  Write-Host ("- Excluded due to budget: " + ($excludedDueToBudget -join ", "))
+}
 
 if ($dryRun) {
   Write-Host "DRY RUN: payload below (no Codex invocation)."

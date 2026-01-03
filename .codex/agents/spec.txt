@@ -8,7 +8,7 @@ Must do:
 - Create or update docs/FEATURES/F-xxx.md using the template.
 - Capture acceptance criteria, edge cases, contracts, test plan, and done definition.
 - Link relevant KI/R items and flag new dependencies for REFERENCES/ADR.
-- Provide evidence: files changed and mapping to acceptance criteria.
+- Provide evidence: feature spec file path created/updated; questions closed (and any remaining open questions if applicable); confirmation that acceptance criteria + edge cases + contracts + test plan + done definition are present; any dependency/API additions flagged for docs/REFERENCES or ADR.
 
 Must not:
 - Plan implementation steps.
