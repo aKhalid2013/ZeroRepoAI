@@ -4,9 +4,13 @@ Use this repo as the starting point for a new project.
 
 ## Step-by-Step
 
+### 0. Initialization (New Projects)
+1) Run Task `ZeroRepo: Init Project (One-Time Setup)`.
+2) Enter your Project Name, Description, and Tech Stack (e.g., "Node, React, Postgres").
+   - This creates `docs/TECH_STACK.md` and configures it so AI agents know your stack.
+
 ### 1. Setup
-1) Copy this repository to a new project location.
-2) **Recommended**: Open in VS Code.
+1) **Recommended**: Open in VS Code.
 3) Use `Ctrl+Shift+P` -> `Run Task` -> `ZeroRepo: Verify (All Gates)` to check your environment.
 
 ### 2. Triage & Planning

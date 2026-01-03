@@ -2,6 +2,27 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "label": "ZeroRepo: Init Project (One-Time Setup)",
+            "type": "shell",
+            "command": "${workspaceFolder}/scripts/init.ps1",
+            "args": [
+                "-Name",
+                "${input:projName}",
+                "-Description",
+                "${input:projDesc}",
+                "-TechStack",
+                "${input:projStack}"
+            ],
+            "problemMatcher": [],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "detail": "Bootstraps the repo with Project Name, Description, and Tech Stack."
+        },
+        {
             "label": "ZeroRepo: New Feature",
             "type": "shell",
             "command": "${workspaceFolder}/scripts/new-feature.ps1",
@@ -151,6 +172,21 @@
         }
     ],
     "inputs": [
+        {
+            "id": "projName",
+            "type": "promptString",
+            "description": "Project Name (e.g. My Awesome App)"
+        },
+        {
+            "id": "projDesc",
+            "type": "promptString",
+            "description": "Project Description"
+        },
+        {
+            "id": "projStack",
+            "type": "promptString",
+            "description": "Tech Stack (e.g. React, Node, Postgres)"
+        },
         {
             "id": "featureTitle",
             "type": "promptString",
