@@ -1,3 +1,10 @@
+---
+current_status: "<!-- e.g., Implementing -->"
+current_step: "<!-- e.g., Plan -->"
+next_agent_role: "<!-- e.g., planner -->"
+next_user_message: "<!-- Summary of the next user prompt. -->"
+---
+
 # Context Manager
 
 This file acts as the **single source of truth** for the current session when working with AI agents. It provides a high-level overview of the project, the backlog of features, the current feature and workflow step, instructions for the next agent invocation, and pointers to all other documentation. After **every task**, this file **must be updated** to reflect the new status.
@@ -31,6 +38,8 @@ This section describes the feature currently being worked on and its state withi
 | **Next Step** | <!-- Describe what needs to happen next. --> |
 | **Acceptance Criteria** | <!-- Briefly summarise or link to acceptance criteria from the spec. --> |
 
+### Plan Summary
+
 ### Next Task Instructions
 Provide concrete instructions for the agent that will perform the next task. These fields are consumed by `scripts/agent.sh` and should be kept up to date.
 
@@ -57,12 +66,14 @@ Refer to these canonical documents for detailed information. Do **not** embed th
 ## Registry and Risk Summary
 Before planning or implementing, identify any open items from the registers that relate to the current feature. List their IDs here and summarise the mitigation or impact.
 
-| Register ID | Description | Mitigation / Consideration |
-| --- | --- | --- |
-| <!-- e.g., KI‑001 --> | <!-- Describe the known issue or risk. --> | <!-- How it affects this feature. --> |
+| Register ID | Description | Mitigation / Consideration | Open Questions | ADR/Reference IDs |
+| --- | --- | --- | --- | --- |
+| <!-- e.g., KI‑001 --> | <!-- Describe the known issue or risk. --> | <!-- How it affects this feature. --> | <!-- Clarify open items. --> | <!-- Link to ADRs or references. --> |
 
 ## Verification and Evidence
 Maintain a record of verification results and other evidence. This section should be updated by the Verifier agent or by any script that runs tests.
+
+### Verification Results
 
 | Gate | Status | Notes |
 | --- | --- | --- |
