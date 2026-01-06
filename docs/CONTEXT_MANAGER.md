@@ -71,6 +71,8 @@ Maintain a record of verification results and other evidence. This section shoul
 | test | SKIP/PASS/FAIL | <!-- Provide command output summary or reference to logs. --> |
 | build | SKIP/PASS/FAIL | <!-- Provide command output summary or reference to logs. --> |
 
+- **Reminder**: After updating gate statuses, run `scripts/update_context.py --status <status> --step <step>` to refresh the Current Feature Progress and Change Log entries.
+
 ### Evidence Summary
 - **Files changed**: <!-- List files modified during the last task. -->
 - **Commands run**: <!-- Document commands executed and their outputs. -->

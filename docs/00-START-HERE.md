@@ -2,6 +2,12 @@
 
 Use this repo as the starting point for a new project.
 
+## Context Manager (Read First)
+- `docs/CONTEXT_MANAGER.md` is the single source of truth for project progress. Check it before invoking any agent to see which step and role should run next.
+- To execute the next task, run `./scripts/context_runner.sh` (use `--dry-run` to preview what will happen). It reads the "Next Task Instructions" from the context manager and invokes the appropriate agent script with the configured role and user message.
+- After completing a task, update the context manager. Use `scripts/update_context.py --status <new_status> --step <new_step>` to refresh the Current Feature Progress and Change Log, and make any additional manual edits needed.
+- The workflows in `docs/WORKFLOW.md` still apply; the context manager guides which agent and step to run within those workflows.
+
 ## Step-by-Step
 
 ### 0. Initialization (New Projects)
