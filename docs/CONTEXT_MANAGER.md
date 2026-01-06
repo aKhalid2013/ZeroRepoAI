@@ -47,6 +47,7 @@ Provide concrete instructions for the agent that will perform the next task. The
 - **Agent Role**: <!-- e.g., planner, implementer, verifier, reviewer, doc_steward, librarian, diagnose. -->
 - **User Message**: <!-- The prompt to pass to the agent describing what it should do. -->
 - **Context Files**: This context manager file plus any relevant spec/plan/test files listed below.
+- **Status/Step Updates**: When running `./scripts/agent.sh --use-context`, optional `--update-status <status>` and `--update-step <step>` flags will refresh the YAML front matter and append a Change Log entry after the agent finishes.
 
 ## Pointers to Key Documents
 Refer to these canonical documents for detailed information. Do **not** embed their content here—use links instead to avoid inconsistency.
@@ -95,6 +96,7 @@ Keep an audit trail of updates to this context manager. Each entry should note t
 | Date | Agent / User | Summary |
 | --- | --- | --- |
 | 2026‑01‑06 | _init_ | Initial creation of context manager with placeholders. |
+| 2026‑01‑06 | agent.sh | Documented automated context updates and change log entries. |
 
 ## Template Usage Instructions
 1. **At project start**: Fill in the **Project Overview** table and seed the **Backlog** with planned features.  
