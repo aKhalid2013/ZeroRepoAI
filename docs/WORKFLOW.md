@@ -24,6 +24,8 @@ Conservative, CLI-driven workflow for AI-assisted development. Durable context l
 Chore track: Triage → Spec-lite → Plan-lite → Implement → Verify → Review → Rework (≤2) → Verify → Commit/Merge → Doc Steward Update (if needed)
 Feature track: Triage → Spec → Plan → Implement → Verify → Review → Rework (≤2) → Verify → Commit/Merge → Doc Steward Update (end of feature only)
 
+All sessions should reference `docs/CONTEXT_MANAGER.md` for the current state and the next instructed step.
+
 ## Triage Checklist
 - [ ] Classify work as Chore (small change, low risk) or Feature (new behavior, medium/high risk).
 - [ ] Confirm the track before proceeding.
